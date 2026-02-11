@@ -94,10 +94,10 @@
     </div>
   </div>
  
-<div class="container mt-5 table-responsive">
+<div class="container mt-5 table-responsive bg-blue-800">
   @yield('contenido_listado')
 </div>
-<div class="mt-5 p-4 bg-dark text-white text-center">
+<div class="mt-5 p-4 text-white text-center">
   <p>Footer</p>
   <em>@yield("Autor"):@yield("actividad")</em><br>
   <i class="fa-brands fa-facebook"></i>

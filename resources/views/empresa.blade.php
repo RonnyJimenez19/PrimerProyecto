@@ -1,7 +1,5 @@
 @extends('layouts.app')
- 
 @section('titulopagina', 'Empresa E-Commerce')
- 
 @push('css')
     <style>
         .fondo {
@@ -37,7 +35,6 @@
 @section("texto_ejemplo")
   {{ $texto_ejemplo }}
 @endsection
- 
 @section("contenido_listado")
   <h2>Listado de Usuarios Registrados</h2>
   <ul>
@@ -63,7 +60,7 @@
         </tbody>
       </table>
     @else
-      <li>La variable de lstado de usaurios no esta definida</li>
+      <p>La variable de listado de usaurios no esta definida</p>
     @endif
   </ul>
 @endsection

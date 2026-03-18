@@ -65,7 +65,7 @@
         data-target="#myModal">
         <span class='fa fa-pencil'></span>
     </button>
-</td>
+</td> 
 
               </td>
             </tr>

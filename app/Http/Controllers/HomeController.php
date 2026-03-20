@@ -31,8 +31,41 @@ class HomeController extends Controller
          $respuesta->save();
    }
 
+
    return $respuesta;
    
 }
+
+public function desactivar($id)
+{
+
+$pagina = Pagina::find($id);
+if (!$pagina) {
+   return response()->json(['error' => 'Página no encontrada'], 404);
+}
+
+    $pagina = Pagina::findOrFail($id);
+    $pagina->is_active = 0;
+    $pagina->save();
+
+    return response()->json(['success' => true]);
+}
+
+public function eliminar($id)
+{
+
+$pagina = Pagina::find($id);
+if (!$pagina) {
+   return response()->json(['error' => 'Página no encontrada'], 404);
+
+}
+
+    $pagina = Pagina::findOrFail($id);
+    $pagina->delete();
+
+    return response()->json(['success' => true]);
+
+}
+
 
 }

@@ -3,10 +3,12 @@
 <head>
   <title>@yield('titulopagina')</title>
   <meta charset="utf-8">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/Z1srPv7lOy9C27hHQ+Xp8a4MxAQ5a+W5IT+brkrY5S9bJmVM2hMDcnK1OnMGCdVK+8g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
    <link rel="stylesheet" href="https://cdn.datatables.net/2.3.7/css/dataTables.dataTables.css" />
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     .fakeimg {
       height: 200px;
@@ -153,7 +155,9 @@
                 { data: "email" },
                 { data: "telefono" },
                 { data: "calle" },
-                { data: "acciones" }
+                { data: "editar" },
+                { data: "ocultar" },
+                { data: "eliminar" }
 
             ]
           }
@@ -166,6 +170,46 @@
         $('#calle').val(calle);
         $('#editForm').attr('action', '/actualizar-dato/' + id);
         $('#myModal').modal('show');
+
+    }
+
+     $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+   function eliminacionLogica(id){
+    if(!confirm('¿Deseas desactivar este registro?')) return;
+    $.ajax({
+        url: '/pagina/desactivar/' + id,
+        type: 'PUT',
+        success: function(){
+            alert('Registro desactivado');
+            location.reload();
+        },
+        error: function(xhr){
+            console.log(xhr.responseText);
+        }
+    });
+}
+
+
+    function eliminacionFisica(id){
+        if(confirm('¿Estás seguro de eliminar este usuario?')){
+            $.ajax({
+                url: '/pagina/eliminar/' + id,
+                type: 'DELETE',
+                success: function(){
+                    alert('Usuario eliminado correctamente');
+                    location.reload();
+                },
+                error: function(xhr){
+                    console.log(xhr.responseText);
+                }
+            });
+        }
+
 
     }
 

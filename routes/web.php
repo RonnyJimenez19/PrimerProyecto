@@ -100,8 +100,8 @@ Route::get('obtenerestatus', function(){
 // El siguiente método se debe de llamar mediante un método de tipo request (por ejemplo, utilizando AJAX o Postman)
 Route::put('/actualizar-dato/{id}', [HomeController::class, 'update'])->name('dato.update');
 
-
-
+Route::put('/pagina/desactivar/{id}', [HomeController::class, 'desactivar']);
+Route::delete('/pagina/eliminar/{id}', [HomeController::class, 'eliminar']);
 
 
 Route::get('post/about/{param}/{name?}', [PostController::class, 'About']);

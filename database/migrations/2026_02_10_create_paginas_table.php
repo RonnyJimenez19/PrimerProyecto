@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('avatar')->nullable();
             $table->string('telefono');
             $table->string('calle');
-            $table->boolean('is_active')->default(true);
+            $table->boolean('is_active')->default(true); // Campo para estado activo/inactivo
             $table->timestamps();
         });
     }

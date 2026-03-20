@@ -40,38 +40,56 @@
   <ul>
     @if(isset($listadousuarios))
       <table id="tablausuarios" class="table table-striped table-bordered">
-        <thead>
-          <tr>
+    <thead>
+     <tr>
             <th>Nombre</th>
             <th>Email</th>
             <th>Teléfono</th>
             <th>Calle</th>
-          </tr>
-        </thead>
-        <tbody>
-          @foreach($listadousuarios as $usuario)
-            <tr>
-              <td>{{ $usuario->name }}</td>
-              <td>{{ $usuario->email }}</td>
-              <td>{{ $usuario->telefono }}</td>
-              <td>{{ $usuario->calle }}</td>
-             <td>
-    <button class='btn btn-primary'
-        onclick="carga_modal({{$usuario->id}}, '{{$usuario->name}}', '{{$usuario->calle}}')"
-        data-id="{{$usuario->id}}"
-        data-nombre="{{$usuario->name}}"
-        data-calle="{{$usuario->calle}}"
-        data-toggle="modal"
-        data-target="#myModal">
-        <span class='fa fa-pencil'></span>
-    </button>
-</td> 
+            <th>Editar</th>
+            <th>Ocultar</th>
+            <th>Eliminar</th>
+        </tr>
+    </thead>
 
-              </td>
-            </tr>
-          @endforeach
-        </tbody>
-      </table>
+    <tbody>
+    @foreach($listadousuarios as $usuario)
+    <tr>
+        <td>{{ $usuario->name }}</td>
+        <td>{{ $usuario->email }}</td>
+        <td>{{ $usuario->telefono }}</td>
+        <td>{{ $usuario->calle }}</td>
+
+        <td>
+            <button class='btn btn-primary'
+                onclick="carga_modal({{$usuario->id}}, '{{$usuario->name}}', '{{$usuario->calle}}')"
+                data-id="{{$usuario->id}}"
+                data-nombre="{{$usuario->name}}"
+                data-calle="{{$usuario->calle}}"
+                data-toggle="modal"
+                data-target="#myModal">
+                <i class="fa-solid fa-pen"></i>
+            </button>
+        </td> 
+
+        <td>
+          <button class='btn btn-warning'
+          onclick="eliminacionLogica({{$usuario->id}})"
+              data-id="{{$usuario->id}}">
+              <i class="fa-solid fa-eye-slash"></i>
+        </td>
+
+        <td>
+            <button class='btn btn-danger'
+                onclick="eliminacionFisica({{$usuario->id}})"
+                data-id="{{$usuario->id}}">
+                <i class="fa-solid fa-trash"></i>
+            </button>
+        </td> 
+    </tr>
+    @endforeach
+    </tbody>
+</table>
     @else
       <p>La variable de listado de usaurios no esta definida</p>
     @endif

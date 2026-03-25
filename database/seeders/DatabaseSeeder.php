@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Pagina;
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -30,7 +32,9 @@ class DatabaseSeeder extends Seeder
         $user->password = bcrypt('12345678');
         $user->save();
 
-            $this->call([PaginasSeeder::class]);
+            Pagina::factory(100)->create();
+
+         //   $this->call([PaginasSeeder::class]);
          
 }
 

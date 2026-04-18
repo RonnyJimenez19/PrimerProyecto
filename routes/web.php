@@ -106,6 +106,13 @@ Route::delete('/pagina/eliminar/{id}', [HomeController::class, 'eliminar']);
 
 Route::get('post/about/{param}/{name?}', [PostController::class, 'About']);
 Route::get('/empresa', [HomeController::class, 'empresa'])->name('empresa');
+
+Route::get('/pagina', [HomeController::class, 'index']);
+Route::get('/pagina/create', [HomeController::class, 'nuevapagina']);
+Route::post('/pagina/', [HomeController::class, 'guardarpagina']);
+Route::get('/pagina/edit/{id}/', [HomeController::class, 'edit']);
+Route::put('/pagina/actualizar/{pagina}', [HomeController::class, 'updatepaginaform']);
+
  
 Route::get('/contact', function(){
 $nombre="Alejandro Góngora Escalante";

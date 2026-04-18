@@ -67,5 +67,16 @@ if (!$pagina) {
 
 }
 
+public function index()
+{
+ $paginas = Pagina::orderBy('id', 'desc')->get();
+$datos["nombre"]="Ronny Arturo Jimenez Sanchez";
+$datos["fecha"]="06-02-26";
+$datos["actividad"]="E-Commerce";
+$datos["descripcion_about"]="Empresa dedicada al E-Commerce";
+$datos["texto_ejemplo"]="Aqui va la descripcion del texto de ejemplo";
+$datos['paginas']=$paginas;
+return view('index', $datos);
+}
 
 }

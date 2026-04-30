@@ -105,15 +105,27 @@ Route::delete('/pagina/eliminar/{id}', [HomeController::class, 'eliminar']);
 
 
 Route::get('post/about/{param}/{name?}', [PostController::class, 'About']);
+
 Route::get('/empresa', [HomeController::class, 'empresa'])->name('empresa');
 
-Route::get('/pagina', [HomeController::class, 'index']);
-Route::get('/pagina/create', [HomeController::class, 'nuevapagina']);
-Route::post('/pagina/', [HomeController::class, 'guardarpagina']);
-Route::get('/pagina/edit/{id}/', [HomeController::class, 'edit']);
-Route::put('/pagina/actualizar/{pagina}', [HomeController::class, 'updatepaginaform']);
+Route::get('/pagina', [HomeController::class, 'index'])->name('pagina.index');
 
- 
+//Route::get('/pagina', [HomeController::class, 'index']);
+
+Route::get('/pagina/create', [HomeController::class, 'nuevapagina'])->name('pagina.create');
+
+Route::post('/pagina/', [HomeController::class, 'guardarpagina'])->name('pagina.nueva');
+
+Route::get('/pagina/edit/{id}/', [HomeController::class, 'edit'])->name('pagina.edit');
+
+Route::put('/pagina/actualizar/{pagina}', [HomeController::class, 'updatepaginaform'])->name('pagina.update');
+
+Route::get('/pagina/{id}', [HomeController::class, 'detalle'])->name('pagina.detalle');
+
+Route::delete('/pagina/delete/{id}', [HomeController::class, 'eliminar'])->name('pagina.delete');
+
+
+
 Route::get('/contact', function(){
 $nombre="Alejandro Góngora Escalante";
 return view('contact', ['nombre'=>$nombre, 'carrera'=>'Doctor en Sistemas

@@ -92,7 +92,8 @@ $datos['texto']="Este es un texto de ejemplo para mostrar en la vista de nueva p
 
 public function guardarpagina(Request $request)
 {
-    $pagina = new Pagina();
+   Pagina::create($request->all());
+   /* $pagina = new Pagina();
     $pagina->name = $request->name;
     $pagina->email = $request->email;
     $pagina->telefono = $request->telefono;
@@ -101,6 +102,9 @@ public function guardarpagina(Request $request)
     $pagina->save();
 
     return redirect('/pagina');
+    return request->all();*/
+    return redirect()->route('pagina.index')->with('success', 'Página creada exitosamente');
+
 }
 
 public function detalle(Pagina $id){

@@ -35,6 +35,7 @@ Explorando las oportunidades con Laravel 12
                 <input type="text" class="form-control" id="telefono" name="telefono" required>
                 <label for="calle" class="form-label">Calle</label> 
                 <input type="text" class="form-control" id="calle" name="calle" required>
+                <input type="hidden" value="<?=bcrypt('123456')?>" name='password' id='password'> 
                 <button type="submit" class="btn btn-primary">Crear Página</button>
         </form>
     </div>

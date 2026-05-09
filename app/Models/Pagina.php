@@ -44,11 +44,14 @@ class Pagina extends Model
         return $registro;
     }
 
-    protected $fillable = [
+    /*protected $fillable = [
     'name',
     'email',
     'telefono',
-    'calle'
-];
+    'calle',
+    'password'
+];*/
+
+protected $guarded = ['is_active'];
 
 }
